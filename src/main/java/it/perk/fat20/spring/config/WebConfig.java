@@ -8,9 +8,14 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+/**
+ * 
+ * @author Perk
+ *
+ */
 @EnableWebMvc
 @Configuration
-@ComponentScan({"it.perk.fat20..."})//completare con il path del pacchetto che contiene i controler
+@ComponentScan({"it.perk.fat20..."})//TOFIX: completare con il path del pacchetto che contiene i controller
 public class WebConfig extends WebMvcConfigurerAdapter {
 	
 	@Bean
