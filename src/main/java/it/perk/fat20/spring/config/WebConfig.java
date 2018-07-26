@@ -15,7 +15,7 @@ import org.springframework.web.servlet.view.JstlView;
  */
 @EnableWebMvc
 @Configuration
-@ComponentScan({"it.perk.fat20..."})//TOFIX: completare con il path del pacchetto che contiene i controller
+@ComponentScan({"it.perk.fat20.spring.mvc"})
 public class WebConfig extends WebMvcConfigurerAdapter {
 	
 	@Bean

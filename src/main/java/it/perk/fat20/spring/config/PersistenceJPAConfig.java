@@ -27,10 +27,10 @@ import com.google.common.base.Preconditions;
  * @author Perk
  *
  */
-@Configuration
-@EnableTransactionManagement
-@PropertySource({ "classpath:persistence-mysql.properties" })//TODO:va creato se non esiste in "src/main/resources"
-@ComponentScan({ "" })//TODO:da riempire con il path del pacchetto che contiene la persistenza model: Abean, dao, service
+//@Configuration
+//@EnableTransactionManagement
+//@PropertySource({ "classpath:persistence-mysql.properties" })//TODO:va creato se non esiste in "src/main/resources"
+//@ComponentScan({ "" })//TODO:da riempire con il path del pacchetto che contiene la persistenza model: Abean, dao, service
 //@EnableJpaRepositories(basePackages = "")//TODO:anche qui da riempire con il path del pacchetto contenente i dao
 public class PersistenceJPAConfig {
 	
