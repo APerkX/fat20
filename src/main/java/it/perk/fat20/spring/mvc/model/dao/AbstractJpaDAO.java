@@ -6,6 +6,12 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+/**
+ * 
+ * @author Perk
+ *
+ * @param <T>
+ */
 public abstract class AbstractJpaDAO<T extends Serializable> {
 	
 	private Class<T> clazz;

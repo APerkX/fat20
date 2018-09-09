@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+//import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -22,11 +22,16 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.google.common.base.Preconditions;
 
-@Configuration
-@EnableTransactionManagement
-@PropertySource({ "classpath:persistence-mysql.properties" })//TODO:va creato se non esiste in "src/main/resources"
-@ComponentScan({ "" })//TODO:da riempire con il path del pacchetto che contiene la persistenza model:bean, dao, service
-@EnableJpaRepositories(basePackages = "")//TODO:anche qui da riempire con il path del pacchetto contenente i dao
+/**
+ * 
+ * @author Perk
+ *
+ */
+//@Configuration
+//@EnableTransactionManagement
+//@PropertySource({ "classpath:persistence-mysql.properties" })//TODO:va creato se non esiste in "src/main/resources"
+//@ComponentScan({ "" })//TODO:da riempire con il path del pacchetto che contiene la persistenza model: Abean, dao, service
+//@EnableJpaRepositories(basePackages = "")//TODO:anche qui da riempire con il path del pacchetto contenente i dao
 public class PersistenceJPAConfig {
 	
 	@Autowired
@@ -64,17 +69,17 @@ public class PersistenceJPAConfig {
     }
 	
 	
-	 @Bean
-	    public PlatformTransactionManager transactionManager(final EntityManagerFactory emf) {
-	        final JpaTransactionManager transactionManager = new JpaTransactionManager();
-	        transactionManager.setEntityManagerFactory(emf);
-	        return transactionManager;
-	    }
+	@Bean
+	public PlatformTransactionManager transactionManager(final EntityManagerFactory emf) {
+		final JpaTransactionManager transactionManager = new JpaTransactionManager();
+		transactionManager.setEntityManagerFactory(emf);
+		return transactionManager;
+	}
 
-	    @Bean
-	    public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
-	        return new PersistenceExceptionTranslationPostProcessor();
-	    }
+	@Bean
+	public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
+		return new PersistenceExceptionTranslationPostProcessor();
+	}
 
 	
 	
