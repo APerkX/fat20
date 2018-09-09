@@ -14,18 +14,12 @@
   <dependencies>
 
 		<!-- Spring -->
-
+		
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-orm</artifactId>
-			<version>${org.springframework.version}</version>
-			<exclusions>
-				<exclusion>
-					<artifactId>commons-logging</artifactId>
-					<groupId>commons-logging</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${org.springframework.version}</version>
+        </dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
@@ -39,6 +33,11 @@
 
 		<!-- persistence -->
 
+		<dependency><!--TODO da verificare se necessaria, visto che utiliziamo hibernate  -->
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
@@ -65,7 +64,7 @@
 			<version>${mysql-connector-java.version}</version>
 			<scope>runtime</scope>
 		</dependency>
-		<dependency>
+		<!--<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
 			<version>${spring-data-jpa.version}</version>
@@ -74,7 +73,7 @@
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<version>${h2.version}</version>
-		</dependency>
+		</dependency>-->
 
 		<!-- validation -->
 
@@ -101,6 +100,19 @@
             <scope>provided</scope>
 			<version>${javax.servlet.servlet-api.version}</version>
 		</dependency>
+		
+		<!-- marshalling -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>${jaxb-api.version}</version>
+			<scope>runtime</scope>
+		</dependency>
 
 		<!-- utils -->
 
@@ -116,6 +128,33 @@
         </dependency>
 
 		<!-- test scoped -->
+
+		<!-- Set di Dipendenze per JUnit5 -->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>${junit.jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>${junit.jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.vintage</groupId>
+			<artifactId>junit-vintage-engine</artifactId>
+			<version>${junit.vintage.version}</version>
+			<scope>test</scope>
+		</dependency>
+
 
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -185,6 +224,10 @@
 		<!-- web -->
 		<javax.servlet.jstl.version>1.2</javax.servlet.jstl.version>
 		<javax.servlet.servlet-api.version>2.5</javax.servlet.servlet-api.version>
+		
+		<!-- marshalling -->
+		<jackson.version>2.8.11</jackson.version>
+   		<jaxb-api.version>2.2.11</jaxb-api.version>
 
 		<!-- various -->
 		<hibernate-validator.version>5.4.1.Final</hibernate-validator.version>
@@ -193,13 +236,19 @@
 
 		<!-- util -->
 		<guava.version>21.0</guava.version>
-		<commons-lang3.version>3.5</commons-lang3.version>
+		<commons-lang3.version>3.4</commons-lang3.version>
 		<assertj.version>3.8.0</assertj.version>
 
 		<httpcore.version>4.4.5</httpcore.version>
 		<httpclient.version>4.5.2</httpclient.version>
 
 		<rest-assured.version>2.9.0</rest-assured.version>
+		
+		<!-- JUnit5 -->
+		<junit.version>4.12</junit.version>
+		<junit.jupiter.version>5.1.1</junit.jupiter.version>
+		<junit.vintage.version>5.1.1</junit.vintage.version>
+		<junit.platform.version>1.1.1</junit.platform.version>
 
 		<!-- maven plugins -->
 		<maven-resources-plugin.version>2.7</maven-resources-plugin.version>
