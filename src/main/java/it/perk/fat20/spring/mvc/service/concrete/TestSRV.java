@@ -9,7 +9,7 @@ import java.util.Date;
 
 import org.springframework.stereotype.Service;
 
-import it.perk.fat20.spring.mvc.model.bean.TestETY;
+import it.perk.fat20.spring.mvc.model.entity.TestETY;
 
 /**
  * @author Perk

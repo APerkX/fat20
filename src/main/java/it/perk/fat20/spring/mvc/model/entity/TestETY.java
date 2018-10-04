@@ -1,7 +1,7 @@
 /**
  * 
  */
-package it.perk.fat20.spring.mvc.model.bean;
+package it.perk.fat20.spring.mvc.model.entity;
 
 import java.util.Date;
 

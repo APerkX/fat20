@@ -27,10 +27,10 @@ import com.google.common.base.Preconditions;
  * @author Perk
  *
  */
-//@Configuration
-//@EnableTransactionManagement
-//@PropertySource({ "classpath:persistence-mysql.properties" })//TODO:va creato se non esiste in "src/main/resources"
-//@ComponentScan({ "" })//TODO:da riempire con il path del pacchetto che contiene la persistenza model: Abean, dao, service
+@Configuration
+@EnableTransactionManagement
+@PropertySource({ "classpath:persistence-mysql.properties" })//va creato se non esiste in "src/main/resources"
+@ComponentScan({ "it.perk.fat20.spring.mvc" })//da riempire con il path del pacchetto che contiene la persistenza model: Abean, dao, service
 //@EnableJpaRepositories(basePackages = "")//TODO:anche qui da riempire con il path del pacchetto contenente i dao
 public class PersistenceJPAConfig {
 	
@@ -45,9 +45,10 @@ public class PersistenceJPAConfig {
 	//Bean che resituisce un EntityManager configurato
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-        final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
+        
+		final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan(new String[] { "org.baeldung.persistence.model" });
+        em.setPackagesToScan(new String[] { "it.perk.fat20.spring.mvc.model.entity" });
 
         final HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
@@ -59,7 +60,8 @@ public class PersistenceJPAConfig {
 	//Bean per il recupero delle properties necessarie per il collegamento al DB
 	@Bean
 	public DataSource dataSource() {
-        final DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        
+		final DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(Preconditions.checkNotNull(env.getProperty("jdbc.driverClassName")));
         dataSource.setUrl(Preconditions.checkNotNull(env.getProperty("jdbc.url")));
         dataSource.setUsername(Preconditions.checkNotNull(env.getProperty("jdbc.user")));
@@ -83,7 +85,7 @@ public class PersistenceJPAConfig {
 
 	
 	
-	//metodo per il resupero di alcune properites di Hibernate
+	//metodo per il recupero di alcune properites di Hibernate
 	final Properties additionalProperties() {
 		final Properties hibernateProperties = new Properties();
 		hibernateProperties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));

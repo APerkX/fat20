@@ -3,6 +3,7 @@
  */
 package it.perk.fat20.spring.mvc.controller;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
@@ -14,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import it.perk.fat20.spring.mvc.model.bean.TestETY;
+import it.perk.fat20.spring.mvc.model.entity.TestETY;
+import it.perk.fat20.spring.mvc.model.entity.UtenteETY;
+import it.perk.fat20.spring.mvc.service.IUtenteFacadeSRV;
 import it.perk.fat20.spring.mvc.service.concrete.TestSRV;
 
 /**
@@ -30,6 +33,9 @@ public class TestController {
 
 	@Autowired
 	private TestSRV testSrv; 
+	
+	@Autowired
+	private IUtenteFacadeSRV utenteSRV;
 	
 	public String hello() {
 		return String.valueOf("Ciao Mondo!!");
@@ -47,6 +53,26 @@ public class TestController {
 	public Collection<TestETY> getEntity() {
 		
 		return testSrv.getEntity("0");
+//		return testSrv.getEntity(id);
+	}
+
+	@RequestMapping(value = "/jpa", method = RequestMethod.GET)
+	@ResponseBody
+	public UtenteETY getJpaEntity() {
+
+		return utenteSRV.getByUsername("andrea.perquoti");
+//		return testSrv.getEntity(id);
+	}
+	
+	@RequestMapping(value = "/newuser", method = RequestMethod.GET)
+	@ResponseBody
+	public void setNewEntity() {
+		
+		Collection<UtenteETY> u = new ArrayList<>();
+		u.add(new UtenteETY(null, "pdfglm76g89h789u", "fabio", "anto", null, null, "test@mail.it", null, "fabio.anto"));
+		u.add(new UtenteETY(null, "prqndr92d28h501e", "andrea", "perk", null, null, "test2@mail.it", null, "andrea.perquoti"));
+		
+		utenteSRV.createNewUser(u);
 //		return testSrv.getEntity(id);
 	}
 	
